@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div ng-controller='ListCtrl as list'> 
+
+	{{11-2}}
+	<br><br>
+	<p ng-repeat='message in list.messages'>{{message.id}}: {{message.text}}</p>
+</div>
+
+<div ng-controller='PostCtrl as post'>
+	<form ng-submit='post.addMessage(post.newMessage)'>
+		<input type="text" ng-model='post.newMessage'>
+		<button type='submit'>Add Message</button>
+	</form>
+</div>
+
+<script src="angular.js"></script> 
+<script src="app.js"></script> 
+
+<div>
+	<br>
+	<b>Using Services to Share Data Between Controllers</b>
+	<p>Services provide an easy way for us to share data and functionality throughout our app. The services we create are singletons that can be injected into controllers and other services, making them the ideal place for writing reusable code.</p>
+	<p>In this example, we'll be creating a service for storing messages, and two controllers, one for rendering a list of messages, and another for adding more messages to the list.
+
+Let's set up our angular module, and create our service and call it messages</p>
+	<p>Create and return and empty object called messages. This is the object that dependencies of this service will receive.</p>
+	<p>Create a property list on messages, and set it to an empty array. This is where we will be storing our messages.</p>
+	<p>Create a function add on messages that will add provided messages to our list.</p>
+	<p>Now that our service is ready, let's create a couple controllers to make use of it.
+
+Create a controller called ListCtrl that injects our messages service, and exposes the list from our service to our view.</p>
+	<p>Within a div that uses the ListCtrl that we just created, use the ng-repeat directive to display our list of messages.</p>
+	<p>The ng-repeat directive iterates over collections within our view, repeating the contents within the element where ng-repeat is used. Since our list of messages is currently empty, let's create another controller to help us populate the list.
+
+Create a controller named PostCtrl that also injects our messages service. This controller will also contain an addMessage function that uses the add function we made in our service.</p>
+	<p>Create a form underneath our list using PostCtrl</p>
+	<p>Set a newMessage within PostCtrl to get a default message, set newMessage to an empty string after calling message.add to clear out the input field after it's been submitted.</p> 
+	<p>
+		https://thinkster.io/a-better-way-to-learn-angularjs/services
+	</p>
+</div>
+
+</body>
+</html>
